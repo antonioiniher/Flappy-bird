@@ -11,7 +11,7 @@ class Player {
 
         this.playerPos = {
 
-            left: 240,
+            left: 300,
             top: this.gameSize.height / 2 - this.playerSize.height,
 
         }

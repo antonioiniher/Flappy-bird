@@ -65,17 +65,21 @@ class Obstacle {
     }
 
     move() {
+
         this.obstaclePos1.left -= this.obstacleVel.left
         this.obstaclePos2.left -= this.obstacleVel.left
         this.updatePosition()
+
     }
 
     updatePosition() {
+
         this.obstacleEle1.style.left = `${this.obstaclePos1.left}px`
         this.obstacleEle1.style.top = `${this.obstaclePos1.top}px`
 
         this.obstacleEle2.style.left = `${this.obstaclePos2.left}px`
         this.obstacleEle2.style.top = `${this.obstaclePos2.top}px`
+
     }
 }
 
