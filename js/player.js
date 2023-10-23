@@ -5,8 +5,8 @@ class Player {
         this.gameSize = gameSize
 
         this.playerSize = {
-            width: 70,
-            height: 70
+            width: 57,
+            height: 57
         }
 
         this.playerPos = {
@@ -30,8 +30,8 @@ class Player {
 
         this.playerEle = document.createElement('div')
         this.playerEle.style.position = 'absolute'
-        this.playerEle.style.height = `${this.playerSize.height}px`
-        this.playerEle.style.width = `${this.playerSize.width}px`
+        this.playerEle.style.height = `${this.playerSize.height + 15}px`
+        this.playerEle.style.width = `${this.playerSize.width + 15}px`
         this.playerEle.style.left = `${this.playerPos.left}px`
         this.playerEle.style.top = `${this.playerPos.top}px`
         this.playerEle.style.backgroundColor = 'black'
@@ -64,6 +64,13 @@ class Player {
         }
         this.playerPos.top -= 20;
         this.playerVel.top -= 6;
+
+    }
+
+    newSize() {
+
+        this.playerSize.width / 2
+        this.playerSize.height / 2
 
     }
 

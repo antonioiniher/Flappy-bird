@@ -1,9 +1,8 @@
 class Coins {
-    constructor(gameScreen, gameSize, obstacleSize1, obstaclePos1) {
+    constructor(gameScreen, gameSize, obstacleSize2) {
         this.gameScreen = gameScreen
         this.gameSize = gameSize
-        this.obstacleSize1 = obstacleSize1
-        this.obstaclePos1 = obstaclePos1
+        this.obstacleSize2 = obstacleSize2
 
         this.coinsSize = {
             width: 20,
@@ -12,7 +11,7 @@ class Coins {
 
         this.coinsPos = {
             left: gameSize.width + 50,
-            top: obstacleSize1.height - 100
+            top: obstacleSize2.height + 90
         }
 
         this.coinsVel = {
