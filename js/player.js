@@ -62,20 +62,39 @@ class Player {
         if (this.playerVel.top > 0) {
             this.playerVel.top = 0
         }
-        this.playerPos.top -= 20;
-        this.playerVel.top -= 6;
+        this.playerPos.top -= 20
+        this.playerVel.top -= 6
 
     }
 
-    newSize() {
+    normalSize() {
 
-        this.playerSize.width / 2
-        this.playerSize.height / 2
+        this.playerSize.width = 57
+        this.playerSize.height = 57
+        this.playerEle.style.height = `${this.playerSize.height + 15}px`
+        this.playerEle.style.width = `${this.playerSize.width + 15}px`
+
+    }
+
+    smallSize() {
+
+        this.playerSize.width = 30
+        this.playerSize.height = 30
+        this.playerEle.style.height = `${this.playerSize.height + 7}px`
+        this.playerEle.style.width = `${this.playerSize.width + 7}px`
 
     }
 
 
 
+    bigSize() {
+
+        this.playerSize.width = 80
+        this.playerSize.height = 80
+        this.playerEle.style.height = `${this.playerSize.height + 15}px`
+        this.playerEle.style.width = `${this.playerSize.width + 15}px`
+
+    }
 
 
 }

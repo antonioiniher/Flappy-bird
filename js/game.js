@@ -12,6 +12,7 @@ const Game = {
     obstacles: [],
     coins: [],
     powerups: [],
+    bees: [],
 
     score: 0,
 
@@ -51,10 +52,11 @@ const Game = {
         this.clearObs()
 
         this.movement()
+        this.newSize()
 
         // this.collision() && this.finish()
         this.goodCollision()
-        this.win()
+        // this.win()
 
         window.requestAnimationFrame(() => this.loop())
 
@@ -67,6 +69,7 @@ const Game = {
         this.obstacles.forEach(obs => obs.move())
         this.coins.forEach(elm => elm.move())
         this.powerups.forEach(elm => elm.move())
+        this.bees.forEach(elm => elm.move())
 
     },
 
@@ -75,6 +78,7 @@ const Game = {
         this.background = new Background(this.gameScreen, this.gameSize)
         this.player = new Player(this.gameScreen, this.gameSize)
         this.powerups = []
+        this.bees = []
 
     },
 
@@ -99,7 +103,7 @@ const Game = {
 
     win() {
 
-        if (this.score >= 3) {
+        if (this.score >= 10) {
             alert('Has ganado')
         }
 
@@ -138,8 +142,12 @@ const Game = {
             this.coins.push(newCoins)
         }
 
-        if (this.newFrames % (this.obstaclesDensity * 5) === 0) {
+        if (this.newFrames % (this.obstaclesDensity * 6) === 0) {
             this.powerups.push(new Powerup(this.gameScreen, this.gameSize))
+        }
+
+        if (this.newFrames % (this.obstaclesDensity * 6) === 0) {
+            this.bees.push(new Bee(this.gameScreen, this.gameSize))
         }
 
     },
@@ -147,7 +155,7 @@ const Game = {
     clearObs() {
 
         this.obstacles.forEach((eachObs, idx) => {
-            if (eachObs.obstaclePos1.left <= 0 - 120) {
+            if (eachObs.obstaclePos1.left <= 0 - eachObs.obstacleSize1.width) {
                 eachObs.obstacleEle1.remove()
                 eachObs.obstacleEle2.remove()
                 this.obstacles.splice(idx, 1)
@@ -162,7 +170,7 @@ const Game = {
             ) {
                 eachCoin.coinsEle.remove()
                 this.coins.splice(idx, 1)
-            } else if (eachCoin.coinsPos.left <= 0 - 120) {
+            } else if (eachCoin.coinsPos.left <= 0 - eachCoin.coinsSize.width) {
                 eachCoin.coinsEle.remove()
                 this.coins.splice(idx, 1)
             }
@@ -176,11 +184,26 @@ const Game = {
             ) {
                 elm.powerupEle.remove()
                 this.powerups.splice(idx, 1)
-            } else if (elm.powerupPos.left <= 0 - 120) {
+            } else if (elm.powerupPos.left <= 0 - elm.powerupSize.width) {
                 elm.powerupEle.remove()
                 this.powerups.splice(idx, 1)
             }
         })
+
+        this.bees.forEach((elm, idx) => {
+            if (
+                elm.beePos.left <= this.player.playerPos.left + this.player.playerSize.width &&
+                elm.beePos.top <= this.player.playerPos.top + this.player.playerSize.height &&
+                this.player.playerPos.top <= elm.beePos.top + elm.beeSize.height
+            ) {
+                elm.beeEle.remove()
+                this.bees.splice(idx, 1)
+            } else if (elm.beePos.left <= 0 - elm.beeSize.width) {
+                elm.beeEle.remove()
+                this.bees.splice(idx, 1)
+            }
+        })
+
 
     },
 
@@ -204,15 +227,30 @@ const Game = {
                 this.player.playerPos.left <= this.powerups[i].powerupPos.left + this.powerups[i].powerupSize.width &&
                 this.player.playerPos.top <= this.powerups[i].powerupPos.top + this.powerups[i].powerupSize.height
             ) {
-                this.player.newSize()
+                this.player.smallSize()
             }
+        }
+
+
+        for (let i = 0; i < this.bees.length; i++) {
+            if (
+                this.player.playerPos.left + this.player.playerSize.width >= this.bees[i].beePos.left &&
+                this.player.playerPos.top + this.player.playerSize.height >= this.bees[i].beePos.top &&
+                this.player.playerPos.left <= this.bees[i].beePos.left + this.bees[i].beeSize.width &&
+                this.player.playerPos.top <= this.bees[i].beePos.top + this.bees[i].beeSize.height
+            ) {
+                this.player.bigSize()
+            }
+        }
+
+    },
+
+    newSize() {
+
+        if (this.newFrames % (this.obstaclesDensity * 4) === 0) {
+            this.player.normalSize()
         }
 
     }
 
 }
-
-
-
-
-

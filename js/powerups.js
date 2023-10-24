@@ -1,6 +1,6 @@
 class Powerup {
 
-    constructor(gameScreen, gameSize,) {
+    constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen
         this.gameSize = gameSize
 
@@ -14,7 +14,7 @@ class Powerup {
         this.powerupPos = {
 
             left: gameSize.width + 400,
-            top: Math.floor(Math.random() * (200 + (gameSize.height - 200)))
+            top: Math.floor(Math.random() * (500 - 100) + 100)
 
         }
 
