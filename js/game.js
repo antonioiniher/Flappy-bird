@@ -9,6 +9,7 @@ const Game = {
 
     background: undefined,
     player: undefined,
+    scoreScreen: undefined,
     obstacles: [],
     coins: [],
     powerups: [],
@@ -18,15 +19,17 @@ const Game = {
 
     newFrames: 0,
 
-    obstaclesDensity: 70,
+    obstaclesDensity: 80,
 
-    key: { jump: 'KeyW' },
+    key: {
+        jump: 'KeyW',
+        start: 'Enter'
+    },
 
     init() {
 
         this.setDimensions()
         this.eventListeners()
-        this.start()
 
     },
 
@@ -53,10 +56,10 @@ const Game = {
 
         this.movement()
         this.newSize()
-
-        // this.collision() && this.finish()
+        this.scoreScreen.updateScore()
+        this.collision() && this.finish()
         this.goodCollision()
-        // this.win()
+        this.win()
 
         window.requestAnimationFrame(() => this.loop())
 
@@ -65,11 +68,11 @@ const Game = {
     movement() {
 
         this.background.move()
-        this.player.move()
+        this.player.move(this.newFrames)
         this.obstacles.forEach(obs => obs.move())
         this.coins.forEach(elm => elm.move())
         this.powerups.forEach(elm => elm.move())
-        this.bees.forEach(elm => elm.move())
+        this.bees.forEach(elm => elm.move(this.newFrames))
 
     },
 
@@ -79,6 +82,7 @@ const Game = {
         this.player = new Player(this.gameScreen, this.gameSize)
         this.powerups = []
         this.bees = []
+        this.scoreScreen = new Score(this.gameScreen, this.gameSize)
 
     },
 
@@ -89,6 +93,9 @@ const Game = {
 
                 case this.key.jump:
                     this.player.jump()
+                    break;
+                case this.key.start:
+                    this.start()
                     break;
             }
         })
@@ -103,7 +110,7 @@ const Game = {
 
     win() {
 
-        if (this.score >= 10) {
+        if (this.score >= 20) {
             alert('Has ganado')
         }
 
@@ -146,7 +153,7 @@ const Game = {
             this.powerups.push(new Powerup(this.gameScreen, this.gameSize))
         }
 
-        if (this.newFrames % (this.obstaclesDensity * 6) === 0) {
+        if (this.newFrames % (this.obstaclesDensity * 9) === 0) {
             this.bees.push(new Bee(this.gameScreen, this.gameSize))
         }
 
@@ -247,7 +254,7 @@ const Game = {
 
     newSize() {
 
-        if (this.newFrames % (this.obstaclesDensity * 4) === 0) {
+        if (this.newFrames % (this.obstaclesDensity * 6) === 0) {
             this.player.normalSize()
         }
 

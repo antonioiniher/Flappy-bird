@@ -5,17 +5,17 @@ class Coins {
         this.obstacleSize2 = obstacleSize2
 
         this.coinsSize = {
-            width: 20,
-            height: 20
+            width: 40,
+            height: 40
         }
 
         this.coinsPos = {
-            left: gameSize.width + 50,
-            top: obstacleSize2.height + 90
+            left: gameSize.width + 40,
+            top: obstacleSize2.height + 80
         }
 
         this.coinsVel = {
-            left: 10
+            left: 8
         }
 
         this.init()
@@ -26,11 +26,14 @@ class Coins {
         this.coinsEle = document.createElement('div')
 
         this.coinsEle.style.position = 'absolute'
-        this.coinsEle.style.backgroundColor = 'yellow'
         this.coinsEle.style.width = `${this.coinsSize.width}px`
         this.coinsEle.style.height = `${this.coinsSize.height}px`
         this.coinsEle.style.left = `${this.coinsPos.left}px`
         this.coinsEle.style.top = `${this.coinsPos.top}px`
+
+        this.coinsEle.style.backgroundImage = `url(./img/Coin_A.png)`
+        this.coinsEle.style.backgroundSize = `${this.coinsSize.height}px ${this.coinsSize.height}px`
+        this.coinsEle.style.backgroundPositionX = "0px"
 
         this.gameScreen.appendChild(this.coinsEle)
 

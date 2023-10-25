@@ -21,7 +21,7 @@ class Background {
 
 
         this.backVel = {
-            left: 8
+            left: 7
         }
 
         this.init()
@@ -31,8 +31,8 @@ class Background {
         this.backgroundElm1 = document.createElement('img')
         this.backgroundElm2 = document.createElement('img')
 
-        this.backgroundElm1.src = './img/maxresdefault.jpg'
-        this.backgroundElm2.src = './img/maxresdefault.jpg'
+        this.backgroundElm1.src = './img/8.png'
+        this.backgroundElm2.src = './img/8.png'
 
         this.backgroundElm1.style.position = 'absolute'
         this.backgroundElm1.style.width = `${this.backSize.width}px`

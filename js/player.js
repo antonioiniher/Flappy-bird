@@ -5,8 +5,8 @@ class Player {
         this.gameSize = gameSize
 
         this.playerSize = {
-            width: 57,
-            height: 57
+            width: 60,
+            height: 60
         }
 
         this.playerPos = {
@@ -22,6 +22,18 @@ class Player {
             gravity: 0.4
         }
 
+        this.playerBackgroundPos = {
+            x: 0,
+            y: 0
+        }
+
+        this.playerSprite = {
+            backgroundPositionX: 0,
+            totalFrames: 6,
+            currentFrame: 1,
+            frameSpeed: 6
+        }
+
         this.init()
 
     }
@@ -30,21 +42,26 @@ class Player {
 
         this.playerEle = document.createElement('div')
         this.playerEle.style.position = 'absolute'
-        this.playerEle.style.height = `${this.playerSize.height + 15}px`
-        this.playerEle.style.width = `${this.playerSize.width + 15}px`
+        this.playerEle.style.height = `${this.playerSize.height}px`
+        this.playerEle.style.width = `${this.playerSize.width}px`
         this.playerEle.style.left = `${this.playerPos.left}px`
         this.playerEle.style.top = `${this.playerPos.top}px`
-        this.playerEle.style.backgroundColor = 'black'
-        this.playerEle.style.borderRadius = '50%'
+
+        this.playerEle.style.backgroundImage = `url(./img/Walk.png)`
+        this.playerEle.style.backgroundSize = `${this.playerSize.width * 6}px ${this.playerSize.height}px`
+        this.playerEle.style.backgroundRepeat = "no-repeat"
+        this.playerEle.style.backgroundPositionX = "0px"
 
         this.gameScreen.appendChild(this.playerEle)
 
     }
 
-    move() {
+    move(newFrames) {
 
         this.playerPos.top += this.playerVel.top
         this.playerVel.top += this.playerVel.gravity
+
+        this.animateSprite(newFrames)
 
         this.updatePosition()
 
@@ -69,10 +86,11 @@ class Player {
 
     normalSize() {
 
-        this.playerSize.width = 57
-        this.playerSize.height = 57
-        this.playerEle.style.height = `${this.playerSize.height + 15}px`
-        this.playerEle.style.width = `${this.playerSize.width + 15}px`
+        this.playerSize.width = 60
+        this.playerSize.height = 60
+        this.playerEle.style.height = `${this.playerSize.height}px`
+        this.playerEle.style.width = `${this.playerSize.width}px`
+        this.playerEle.style.backgroundSize = `${this.playerSize.height * 6}px ${this.playerSize.height}px`
 
     }
 
@@ -80,8 +98,9 @@ class Player {
 
         this.playerSize.width = 30
         this.playerSize.height = 30
-        this.playerEle.style.height = `${this.playerSize.height + 7}px`
-        this.playerEle.style.width = `${this.playerSize.width + 7}px`
+        this.playerEle.style.height = `${this.playerSize.height}px`
+        this.playerEle.style.width = `${this.playerSize.width}px`
+        this.playerEle.style.backgroundSize = `${this.playerSize.height * 6}px ${this.playerSize.height}px`
 
     }
 
@@ -91,9 +110,28 @@ class Player {
 
         this.playerSize.width = 80
         this.playerSize.height = 80
-        this.playerEle.style.height = `${this.playerSize.height + 15}px`
-        this.playerEle.style.width = `${this.playerSize.width + 15}px`
+        this.playerEle.style.height = `${this.playerSize.height}px`
+        this.playerEle.style.width = `${this.playerSize.width}px`
+        this.playerEle.style.backgroundSize = `${this.playerSize.height * 6}px ${this.playerSize.height}px`
 
+    }
+
+    animateSprite(newFrames) {
+
+        if (newFrames % this.playerSprite.frameSpeed == 0) {
+            this.playerSprite.currentFrame++
+        }
+        if (this.playerSprite.currentFrame >= this.playerSprite.totalFrames) {
+            this.playerSprite.currentFrame = 0
+        }
+
+        this.playerSprite.backgroundPositionX = -this.playerSize.width * this.playerSprite.currentFrame
+
+        this.updateSprite()
+    }
+
+    updateSprite() {
+        this.playerEle.style.backgroundPositionX = `${this.playerSprite.backgroundPositionX}px`
     }
 
 

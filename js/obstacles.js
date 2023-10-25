@@ -33,7 +33,7 @@ class Obstacle {
         }
 
         this.obstacleVel = {
-            left: 10
+            left: 8
         }
 
         this.init()
@@ -46,18 +46,24 @@ class Obstacle {
         this.obstacleEle2 = document.createElement('div')
 
         this.obstacleEle1.style.position = 'absolute'
-        this.obstacleEle1.style.backgroundColor = 'black'
         this.obstacleEle1.style.width = `${this.obstacleSize1.width}px`
         this.obstacleEle1.style.height = `${this.obstacleSize1.height}px`
         this.obstacleEle1.style.left = `${this.obstaclePos1.left}px`
         this.obstacleEle1.style.top = `${this.obstaclePos1.top}px`
 
         this.obstacleEle2.style.position = 'absolute'
-        this.obstacleEle2.style.backgroundColor = 'red'
         this.obstacleEle2.style.width = `${this.obstacleSize2.width}px`
         this.obstacleEle2.style.height = `${this.obstacleSize2.height}px`
         this.obstacleEle2.style.left = `${this.obstaclePos2.left}px`
         this.obstacleEle2.style.top = `${this.obstaclePos2.top}px`
+
+        this.obstacleEle1.style.backgroundImage = `url(./img/pipeA.png)`
+        this.obstacleEle1.style.backgroundSize = `${this.obstacleSize1.width * 2}px ${this.obstacleSize1.height}px`
+        this.obstacleEle1.style.backgroundPositionX = "180px"
+
+        this.obstacleEle2.style.backgroundImage = `url(./img/pipeB.png)`
+        this.obstacleEle2.style.backgroundSize = `${this.obstacleSize2.width * 2}px ${this.obstacleSize2.height}px`
+        this.obstacleEle2.style.backgroundPositionX = "180px"
 
         this.gameScreen.appendChild(this.obstacleEle1)
         this.gameScreen.appendChild(this.obstacleEle2)
