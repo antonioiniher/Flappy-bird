@@ -47,13 +47,13 @@ class Obstacle {
 
         this.obstacleEle1.style.position = 'absolute'
         this.obstacleEle1.style.width = `${this.obstacleSize1.width}px`
-        this.obstacleEle1.style.height = `${this.obstacleSize1.height}px`
+        this.obstacleEle1.style.height = `${this.obstacleSize1.height + 10}px`
         this.obstacleEle1.style.left = `${this.obstaclePos1.left}px`
         this.obstacleEle1.style.top = `${this.obstaclePos1.top}px`
 
         this.obstacleEle2.style.position = 'absolute'
         this.obstacleEle2.style.width = `${this.obstacleSize2.width}px`
-        this.obstacleEle2.style.height = `${this.obstacleSize2.height}px`
+        this.obstacleEle2.style.height = `${this.obstacleSize2.height + 10}px`
         this.obstacleEle2.style.left = `${this.obstaclePos2.left}px`
         this.obstacleEle2.style.top = `${this.obstaclePos2.top}px`
 

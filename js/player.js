@@ -46,6 +46,7 @@ class Player {
         this.playerEle.style.width = `${this.playerSize.width}px`
         this.playerEle.style.left = `${this.playerPos.left}px`
         this.playerEle.style.top = `${this.playerPos.top}px`
+        this.playerEle.style.borderRadius = '50%'
 
         this.playerEle.style.backgroundImage = `url(./img/Walk.png)`
         this.playerEle.style.backgroundSize = `${this.playerSize.width * 6}px ${this.playerSize.height}px`

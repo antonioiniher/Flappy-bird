@@ -104,14 +104,38 @@ const Game = {
 
     finish() {
 
-        alert('Has perdido')
+        this.gameover = document.createElement('div')
+        this.gameover.style.position = 'absolute'
+        this.gameover.style.width = `${this.gameSize.width}px`
+        this.gameover.style.height = `${this.gameSize.height}px`
+        this.gameover.style.left = '0px'
+        this.gameover.style.top = '0px'
+        this.gameover.style.textAlign = "center"
+        this.gameover.style.fontWeight = "bold"
+        this.gameover.style.backgroundImage = `url(./img/8.png)`
+        this.gameover.style.fontSize = "150px"
+        this.gameover.style.paddingTop = "400px";
+        this.gameover.innerHTML = "Such a loser!"
+        this.gameScreen.appendChild(this.gameover)
 
     },
 
     win() {
 
         if (this.score >= 20) {
-            alert('Has ganado')
+            this.winner = document.createElement('div')
+            this.winner.style.position = 'absolute'
+            this.winner.style.width = `${this.gameSize.width}px`
+            this.winner.style.height = `${this.gameSize.height}px`
+            this.winner.style.left = '0px'
+            this.winner.style.top = '0px'
+            this.winner.style.textAlign = "center"
+            this.winner.style.fontWeight = "bold"
+            this.winner.style.backgroundImage = `url(./img/8.png)`
+            this.winner.style.fontSize = "150px"
+            this.winner.style.paddingTop = "500px";
+            this.winner.innerHTML = "You rocked it!"
+            this.gameScreen.appendChild(this.winner)
         }
 
     },

@@ -24,7 +24,7 @@ class Bee {
 
         this.beeSprite = {
             backgroundPositionX: 0,
-            totalFrames: 6,
+            totalFrames: 4,
             currentFrame: 1,
             frameSpeed: 6
         }

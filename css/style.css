@@ -1,5 +1,5 @@
 body {
-    background-image: url(/img/8.png);
+    background-image: url(../img/8.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,9 +7,23 @@ body {
 }
 
 p {
-    margin: 200px;
+    margin-top: 130px;
+}
+
+h2 {
+    margin: 120px;
 }
 
 .intro {
-    font-size: 3em;
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 7em;
+    font-weight: bold;
+}
+
+img {
+    width: 7%;
 }
