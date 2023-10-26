@@ -1,6 +1,10 @@
 const Game = {
 
     gameScreen: document.querySelector('#game-screen'),
+    mainTheme: document.getElementById('theme'),
+    coinSound: document.getElementById('coin'),
+    beeSound: document.getElementById('bee'),
+    powerSound: document.getElementById('power'),
 
     gameSize: {
         width: window.innerWidth,
@@ -50,6 +54,8 @@ const Game = {
     loop() {
 
         this.newFrames > 5000 ? this.newFrames = 0 : this.newFrames++
+
+        // this.mainTheme.play()
 
         this.newObs()
         this.clearObs()
@@ -117,6 +123,7 @@ const Game = {
         this.gameover.style.paddingTop = "400px";
         this.gameover.innerHTML = "Such a loser!"
         this.gameScreen.appendChild(this.gameover)
+        this.cancelAnimationFrame()
 
     },
 
@@ -133,9 +140,10 @@ const Game = {
             this.winner.style.fontWeight = "bold"
             this.winner.style.backgroundImage = `url(./img/8.png)`
             this.winner.style.fontSize = "150px"
-            this.winner.style.paddingTop = "500px";
+            this.winner.style.paddingTop = "400px";
             this.winner.innerHTML = "You rocked it!"
             this.gameScreen.appendChild(this.winner)
+            this.cancelAnimationFrame()
         }
 
     },
@@ -179,6 +187,7 @@ const Game = {
 
         if (this.newFrames % (this.obstaclesDensity * 9) === 0) {
             this.bees.push(new Bee(this.gameScreen, this.gameSize))
+            this.beeSound.play()
         }
 
     },
@@ -248,6 +257,7 @@ const Game = {
                 this.player.playerPos.top <= this.coins[i].coinsPos.top + this.coins[i].coinsSize.height
             ) {
                 this.score++
+                this.coinSound.play()
             }
         }
 
@@ -259,6 +269,7 @@ const Game = {
                 this.player.playerPos.top <= this.powerups[i].powerupPos.top + this.powerups[i].powerupSize.height
             ) {
                 this.player.smallSize()
+                this.powerSound.play()
             }
         }
 
