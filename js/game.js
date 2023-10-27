@@ -55,7 +55,8 @@ const Game = {
 
         this.newFrames > 5000 ? this.newFrames = 0 : this.newFrames++
 
-        // this.mainTheme.play()
+        this.mainTheme.volume = 0.3
+        this.mainTheme.play()
 
         this.newObs()
         this.clearObs()
