@@ -61,7 +61,7 @@ class Obstacle {
         this.obstacleEle1.style.backgroundSize = `${this.obstacleSize1.width * 2}px ${this.obstacleSize1.height}px`
         this.obstacleEle1.style.backgroundPositionX = "180px"
 
-        this.obstacleEle2.style.backgroundImage = `url(./img/pipeB.png)`
+        this.obstacleEle2.style.backgroundImage = `url(./img/PipeB.png)`
         this.obstacleEle2.style.backgroundSize = `${this.obstacleSize2.width * 2}px ${this.obstacleSize2.height}px`
         this.obstacleEle2.style.backgroundPositionX = "180px"
 
