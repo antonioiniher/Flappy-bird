@@ -32,6 +32,10 @@ const Game = {
   init() {
     this.setDimensions()
     this.eventListeners()
+    this.mainTheme.volume = 0.05
+    this.coinSound.volume = 0.05
+    this.beeSound.volume = 0.05
+    this.powerSound.volume = 0.05
   },
 
   setDimensions() {
@@ -47,7 +51,6 @@ const Game = {
   loop() {
     this.newFrames > 5000 ? (this.newFrames = 0) : this.newFrames++
 
-    this.mainTheme.volume = 0.3
     this.mainTheme.play()
 
     this.newObs()
@@ -60,6 +63,9 @@ const Game = {
     this.goodCollision()
     this.win()
 
+    // setTimeout(() => {
+    //   this.loop()
+    // }, 15)
     window.requestAnimationFrame(() => this.loop())
   },
 
@@ -107,7 +113,11 @@ const Game = {
     this.gameover.style.paddingTop = '400px'
     this.gameover.innerHTML = 'Has perdido!'
     this.gameScreen.appendChild(this.gameover)
-    this.cancelAnimationFrame()
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 6000)
+    // this.cancelAnimationFrame()
   },
 
   win() {
