@@ -63,10 +63,10 @@ const Game = {
     this.goodCollision()
     this.win()
 
-    // setTimeout(() => {
-    //   this.loop()
-    // }, 15)
-    window.requestAnimationFrame(() => this.loop())
+    setTimeout(() => {
+      this.loop()
+    }, 10)
+    // window.requestAnimationFrame(() => this.loop())
   },
 
   movement() {
@@ -88,6 +88,9 @@ const Game = {
 
   eventListeners() {
     document.addEventListener('keydown', event => {
+      if (event.keyCode === 32) {
+        event.preventDefault()
+      }
       switch (event.code) {
         case this.key.jump:
           this.player.jump()
@@ -116,7 +119,7 @@ const Game = {
 
     setTimeout(() => {
       window.location.reload()
-    }, 6000)
+    }, 2000)
     // this.cancelAnimationFrame()
   },
 
